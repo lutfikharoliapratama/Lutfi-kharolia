@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lutfi Kharolia - Student Portfolio Developer</title>
+    <!-- Meta Tag SEO Dasar -->
+    <meta name="description" content="Portfolio web developer dan mahasiswa teknik informatika. Lihat proyek coding, desain, dan skill terbaru saya.">
+    <meta name="keywords" content="portfolio, web developer, pelajar, teknik komputer, html, css, javascript, react">
+    <meta name="author" content="Lutfi Pratama">
+    
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Ikon (Lucide Icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Konfigurasi Tailwind & Font Inter -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Mengaktifkan Dark Mode menggunakan class 'dark'
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-accent': '#4f46e5', // Indigo-600
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Menggunakan Font Inter dari Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Scroll Behavior Halus */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Styling untuk progress bar (agar animasi terlihat) */
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+
+        /* Animasi halus pada tombol dan kartu */
+        .interactive-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            @apply dark:shadow-indigo-500/10;
+        }
+
+        /* Offset untuk Header Fixed */
+        section {
+            padding-top: 120px; /* Jarak atas untuk mengatasi header fixed */
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- HEADER & NAVIGASI (FIXED) -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-white/90 dark:bg-gray-900/90 shadow-lg dark:shadow-gray-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            
+            <!-- Logo Pribadi -->
+            <a href="#home" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <span class="text-indigo-600 dark:text-indigo-400">LK</span> Portfolio
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-1" id="desktop-nav">
+                <!-- Nav items akan diisi oleh JS -->
+            </nav>
+
+            <!-- Toggles & Mobile Menu Button -->
+            <div class="flex items-center gap-3">
+                <!-- Dark Mode Toggle -->
+                <button id="dark-mode-toggle" class="p-2 rounded-full transition-colors duration-300 text-indigo-600 dark:text-indigo-400 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle Dark Mode">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-button" class="md:hidden p-2 rounded-full transition-colors duration-300 text-indigo-600 dark:text-indigo-400 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by Default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-800 py-2">
+            <!-- Nav items akan diisi oleh JS -->
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-6xl mx-auto">
+        
+        <!-- 1. HOME / BERANDA -->
+        <section id="home" class="flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left w-full">
+                <!-- Teks Intro -->
+                <div class="md:w-3/5 order-2 md:order-1">
+                    <p class="text-xl font-medium text-gray-500 dark:text-gray-400 mb-2">Halo, saya</p>
+                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900 dark:text-white mb-4">
+                        Lutfi Kharolia Pratama
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-indigo-600 dark:text-indigo-400">
+                        Full-Stack Developer & Mahasiswa Teknik Informatika
+                    </h2>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0">
+                        Menciptakan solusi digital yang efisien dan berdampak sosial positif.
+                    </p>
+    
+                    <!-- Tombol CTA -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#portfolio" class="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-lg shadow-xl bg-indigo-600 hover:bg-indigo-700 transform transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-indigo-500/50">
+                            <i data-lucide="folder" class="w-5 h-5"></i>
+                            Lihat Portfolio
+                        </a>
+                        <a href="#contact" class="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-lg border border-indigo-600 text-indigo-600 dark:text-indigo-400 transition-colors duration-300 hover:bg-indigo-50 dark:hover:bg-gray-800">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Foto Profil -->
+                <div class="md:w-2/5 order-1 md:order-2">
+                    <img
+                        src="https://placehold.co/400x400/1e293b/ffffff?text=LK"
+                        alt="Foto Profil AZ"
+                        class="w-56 h-56 md:w-64 md:h-64 object-cover rounded-full mx-auto shadow-2xl shadow-indigo-500/40 border-4 border-white dark:border-gray-800"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT / TENTANG SAYA -->
+        <section id="about" class="px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-extrabold mb-12 text-center text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400">
+                    Tentang Saya
+                </h2>
+                <div class="space-y-8 text-lg text-gray-700 dark:text-gray-300">
+                    <p class="leading-relaxed">
+                        Sejak tahun pertama kuliah di Teknik Informatika, saya menemukan *passion* dalam mengubah ide kompleks menjadi antarmuka yang ramah pengguna. Saya fokus pada ekosistem JavaScript, dari frontend (React) hingga backend (Node.js). Perjalanan ini didorong oleh rasa ingin tahu yang tak pernah puas dan keinginan untuk terus belajar.
+                    </p>
+        
+                    <!-- Fun Fact & Hobbies -->
+                    <div class="grid md:grid-cols-2 gap-8 pt-4 border-t border-gray-200 dark:border-gray-800">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400">
+                                Fun Fact (Sedikit Personal)
+                            </h3>
+                            <p class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-inner italic">
+                                "Saya bisa menyelesaikan Kubus Rubik dalam waktu kurang dari dua menit, dan ini sering saya jadikan analogi untuk memecahkan masalah *coding* yang kompleks."
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400">
+                                Minat & Hobi
+                            </h3>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Membaca novel fiksi ilmiah</li>
+                                <li>Hiking</li>
+                                <li>Bermain gitar akustik</li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <!-- CV Download -->
+                    <div class="pt-6 text-center">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-lg shadow-xl bg-indigo-600 hover:bg-indigo-700 transform transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-indigo-500/50" download>
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                            Unduh Resume/CV (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PORTFOLIO / PROYEK -->
+        <section id="portfolio" class="px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-extrabold mb-12 text-center text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400">
+                    Portfolio & Proyek Pilihan
+                </h2>
+                <div class="grid gap-8 md:grid-cols-2">
+                    
+                    <!-- Proyek 1 -->
+                    <div class="interactive-card p-6 border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg bg-white dark:bg-gray-800">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400">
+                                Platform E-Learning Interaktif
+                            </h3>
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Okt 2024</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                            Aplikasi web untuk kursus online dengan fitur kuis real-time dan forum diskusi. Dibangun menggunakan React dan Firebase.
+                        </p>
+                        <div class="mt-4">
+                            <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Skill Digunakan:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600">React</span>
+                                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600">Firebase</span>
+                                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600">Tailwind CSS</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="mt-4 inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline transition-colors">
+                            Lihat Proyek <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Proyek 2 -->
+                    <div class="interactive-card p-6 border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg bg-white dark:bg-gray-800">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400">
+                                Sistem Manajemen Inventaris (Backend)
+                            </h3>
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Jul 2024</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                            Implementasi API RESTful yang aman dan efisien untuk mengelola stok barang. Menggunakan Node.js, Express, dan PostgreSQL.
+                        </p>
+                        <div class="mt-4">
+                            <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Skill Digunakan:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600">Node.js</span>
+                                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600">PostgreSQL</span>
+                                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600">Express</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="mt-4 inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline transition-colors">
+                            Lihat Repo <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="text-center text-gray-500 dark:text-gray-400 mt-10">
+                    Kunjungi profil GitHub saya untuk melihat semua kontribusi.
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. SKILLS / KEMAMPUAN -->
+        <section id="skills" class="px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-extrabold mb-12 text-center text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400">
+                    Kemampuan Teknis & Non-Teknis
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Hard Skills -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400 border-b pb-2 border-indigo-500/50">
+                            Hard Skills (Teknis)
+                        </h3>
+                        <!-- Skill items akan diisi oleh JS -->
+                        <div id="hard-skills-list"></div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400 border-b pb-2 border-indigo-500/50">
+                            Soft Skills (Non-Teknis)
+                        </h3>
+                        <!-- Skill items akan diisi oleh JS -->
+                        <div id="soft-skills-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CONTACT / HUBUNGI -->
+        <section id="contact" class="px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-extrabold mb-12 text-center text-gray-900 dark:text-white text-indigo-600 dark:text-indigo-400">
+                    Hubungi Saya
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Form Kontak -->
+                    <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-2xl">
+                        <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white">Kirim Pesan Langsung</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 transition-colors" placeholder="Nama Anda">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Alamat Email</label>
+                                <input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 transition-colors" placeholder="nama@email.com">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Pesan Anda</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 transition-colors" placeholder="Saya ingin berdiskusi tentang..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-lg shadow-xl bg-indigo-600 hover:bg-indigo-700 transform transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] shadow-indigo-500/50">
+                                Kirim Pesan
+                            </button>
+                            <!-- Message Box untuk simulasi alert -->
+                            <div id="message-box" class="hidden p-4 mt-4 rounded-lg text-center font-medium bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300"></div>
+                        </form>
+                    </div>
+
+                    <!-- Media Sosial & Info Kontak -->
+                    <div class="p-6 bg-gray-100 dark:bg-gray-800/50 rounded-xl shadow-inner h-full">
+                        <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white">Temukan Saya di Media Sosial</h3>
+                        <ul id="social-links" class="space-y-4">
+                            <!-- Social links akan diisi oleh JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-gray-100 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500 dark:text-gray-400 mt-16">
+        <p>
+            Dibuat dengan ❤️ HTML, Tailwind CSS, & Vanilla JS. | Desain Minimalis & Modern.
+        </p>
+        <p class="mt-1">
+            &copy; <span id="current-year"></span> Anya Zulaikha.
+        </p>
+    </footer>
+
+    <!-- Tombol Kembali ke Atas (Back to Top) -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full shadow-xl bg-indigo-600 hover:bg-indigo-700 text-white transition-opacity duration-300 opacity-0 transform scale-0" aria-label="Kembali ke ata
